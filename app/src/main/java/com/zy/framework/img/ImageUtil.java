@@ -2,17 +2,16 @@ package com.zy.framework.img;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.IdRes;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.zy.framework.app.MyApplication;
+import com.zy.zywanandroid.app.MyApplication;
 import com.zy.zywanandroid.R;
 
 public class ImageUtil {
     private static boolean load = true;
-    private static int defaultPlaceHolder = R.mipmap.ic_launcher;
-    private static int defaultErrHolder = R.mipmap.ic_launcher;
+    private static @DrawableRes int defaultPlaceHolder = R.mipmap.ic_launcher;
+    private static @DrawableRes int defaultErrHolder = R.mipmap.ic_launcher;
 
     public static void loadByUrl(Context context, ImageView view,String url,
                                  @DrawableRes int placeHolder,@DrawableRes int errorHolder){
@@ -33,7 +32,7 @@ public class ImageUtil {
     };
 
     public static void loadByRes(ImageView view,@DrawableRes int id){
-        Glide.with(view)
+        Glide.with(MyApplication.getApp().getApplicationContext())
                 .load(id)
                 .into(view);
     }

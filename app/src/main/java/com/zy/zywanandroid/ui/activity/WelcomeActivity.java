@@ -38,6 +38,7 @@ public class WelcomeActivity extends BaseActivity {
                 .subscribe(i -> {
                     MainActivity.start(WelcomeActivity.this);
                     Log.i(TAG, "initData: startActivity on "+ Thread.currentThread().getName());
+                    finish();
                 });
     }
 }

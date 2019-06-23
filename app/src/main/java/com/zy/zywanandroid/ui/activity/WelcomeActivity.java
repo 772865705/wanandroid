@@ -1,13 +1,11 @@
 package com.zy.zywanandroid.ui.activity;
 
+import android.widget.EditText;
+
 import com.zy.framework.base.BaseActivity;
-import com.zy.framework.base.BaseMvpActivity;
-import com.zy.framework.base.IPresenter;
 import com.zy.zywanandroid.R;
 
 public class WelcomeActivity extends BaseActivity {
-
-
 
     @Override
     protected int getContentView() {
@@ -16,7 +14,6 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.zy.framework.app;
+package com.zy.zywanandroid.app;
 
 public class AppConstants {
     public static boolean debug = false;

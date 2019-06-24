@@ -38,9 +38,8 @@ public abstract class BaseActivity extends FragmentActivity {
         if (!StatusBarUtil.setStatusBarDarkTheme(this, true)) {
             //如果不支持设置深色风格 为了兼容总不能让状态栏白白的看不清, 于是设置一个状态栏颜色为半透明,
             //这样半透明+白=灰, 状态栏的文字能看得清
-            StatusBarUtil.setStatusBarColor(this, 0x55000000);
+            StatusBarUtil.setStatusBarColor(this, setStatusBarColor());
         }
-
     }
 
     protected abstract int getContentView();
@@ -48,6 +47,10 @@ public abstract class BaseActivity extends FragmentActivity {
     protected abstract void initView();
 
     protected abstract void initData();
+
+    protected int setStatusBarColor(){
+        return 0x55000000;
+    }
 
     protected void beforeSetContentView() {
     }

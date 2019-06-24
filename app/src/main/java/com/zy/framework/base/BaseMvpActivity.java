@@ -20,6 +20,7 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
 
         setContentView(getContentView());
         mUnbinder = ButterKnife.bind(this);
+        initStatusBar();
         initView();
         initData();
 

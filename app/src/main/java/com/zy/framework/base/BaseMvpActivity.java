@@ -35,7 +35,7 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
 
     public abstract T setPresenter();
 
-    protected void initView(){};
+    protected abstract void initView();
 
     protected void initData(){};
 

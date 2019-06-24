@@ -1,9 +1,6 @@
 package com.zy.zywanandroid.ui.activity;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.zy.framework.base.BaseMvpActivity;
@@ -13,10 +10,11 @@ import com.zy.zywanandroid.ui.contract.MainContract;
 import com.zy.zywanandroid.ui.model.MainModel;
 import com.zy.zywanandroid.ui.presenter.MainPresenter;
 import com.zy.zywanandroid.view.AutoWrapLayout;
+import com.zy.zywanandroid.view.TagView;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.View {
+public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.IView {
 
     @BindView(R.id.autowrap)
     AutoWrapLayout mWrap;
@@ -38,7 +36,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     protected void initView() {
         for (int i = 0; i < 30; i++) {
-            TextView tv = new TextView(this);
+            TagView tv = new TagView(this);
             tv.setText("我是"+i);
             mWrap.addView(tv);
         }

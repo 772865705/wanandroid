@@ -16,9 +16,6 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.IView {
 
-    @BindView(R.id.autowrap)
-    AutoWrapLayout mWrap;
-
     public static void start(Context context){
         IntentUtils.startActivity(context,MainActivity.class);
     }
@@ -35,10 +32,5 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     protected void initView() {
-        for (int i = 0; i < 30; i++) {
-            TagView tv = new TagView(this);
-            tv.setText("我是"+i);
-            mWrap.addView(tv);
-        }
     }
 }

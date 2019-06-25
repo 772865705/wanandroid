@@ -4,32 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="1dp"
     tools:context=".ui.activity.MainActivity">
 
-    <com.zy.zywanandroid.view.AutoWrapLayout
-        android:id="@+id/autowrap"
+    <android.support.v7.widget.Toolbar
+        android:background="@color/color_bg_light_blue"
+        app:collapseIcon="@mipmap/ic_launcher"
+        app:navigationIcon="@mipmap/ic_launcher"
+        android:id="@+id/tool_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/tablayout"
+        app:layout_constraintTop_toBottomOf="@id/tool_main"/>
 
-    </com.zy.zywanandroid.view.AutoWrapLayout>
-
-    <com.zy.zywanandroid.view.TagView
-        android:text="56546"
-        android:id="@+id/tagv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:tabIndicatorHeight="0dp"
+        android:background="@color/color_bg_light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/autowrap"/>
+        app:layout_constraintStart_toStartOf="parent">
 
+        <android.support.design.widget.TabItem
+            android:icon="@drawable/slt_ic_home"
+            android:text="首页"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <android.support.design.widget.TabItem
+            android:icon="@drawable/slt_ic_knowledge"
+            android:text="知识"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <android.support.design.widget.TabItem
+            android:icon="@drawable/slt_ic_navigation"
+            android:text="导航"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <android.support.design.widget.TabItem
+            android:icon="@drawable/slt_ic_project"
+            android:text="项目"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <android.support.design.widget.TabItem
+            android:icon="@drawable/slt_ic_me"
+            android:text="我的"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </android.support.design.widget.TabLayout>
 </android.support.constraint.ConstraintLayout>

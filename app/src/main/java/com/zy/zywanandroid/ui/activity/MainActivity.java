@@ -1,7 +1,6 @@
 package com.zy.zywanandroid.ui.activity;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -19,12 +18,11 @@ import com.zy.zywanandroid.ui.model.MainModel;
 import com.zy.zywanandroid.ui.presenter.MainPresenter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.IView {
 
 
-    @BindView(R.id.tool_main)
+    @BindView(R.id.tool_common)
     Toolbar toolMain;
     @BindView(R.id.vp_main)
     ViewPager vpMain;

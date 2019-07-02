@@ -36,7 +36,7 @@ public class ViewUtils {
     /**
      * 获取随机rgb颜色值
      */
-    public static int randomColor() {
+    public static @ColorInt int randomColor() {
         Random random = new Random();
         //0-190, 如果颜色值过大,就越接近白色,就看不清了,所以需要限定范围
         int red =random.nextInt(150);

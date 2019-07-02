@@ -15,15 +15,6 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter=setPresenter();
-        beforeSetContentView();
-
-        setContentView(getContentView());
-        mUnbinder = ButterKnife.bind(this);
-        initStatusBar();
-        initView();
-        initData();
-
         if (mPresenter!=null) {
             mPresenter.onCreate(savedInstanceState);
         }
@@ -40,7 +31,7 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
     protected void initData(){};
 
     protected void beforeSetContentView() {
-
+        super.beforeSetContentView();
     }
 
     @Override

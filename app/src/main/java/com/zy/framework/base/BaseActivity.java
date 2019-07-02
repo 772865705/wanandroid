@@ -2,15 +2,22 @@ package com.zy.framework.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Window;
 
 import com.zy.framework.util.StatusBarUtil;
+import com.zy.zywanandroid.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     private Unbinder mUnbinder;
+
+    protected Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -18,9 +25,20 @@ public abstract class BaseActivity extends FragmentActivity {
         beforeSetContentView();
         setContentView(getContentView());
         mUnbinder = ButterKnife.bind(this);
+        initToolBar();
         initStatusBar();
         initView();
         initData();
+
+    }
+
+    private void initToolBar() {
+        toolbar = findViewById(R.id.tool_common);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("");
+        }
 
     }
 
@@ -49,7 +67,7 @@ public abstract class BaseActivity extends FragmentActivity {
     protected abstract void initData();
 
     protected int setStatusBarColor(){
-        return 0x55000000;
+        return 0xff8080ff;
     }
 
     protected void beforeSetContentView() {

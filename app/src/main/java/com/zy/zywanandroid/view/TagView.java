@@ -9,6 +9,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
+import com.zy.framework.util.LogUtil;
 import com.zy.framework.util.ViewUtils;
 import com.zy.zywanandroid.R;
 
@@ -41,8 +42,11 @@ public class TagView extends android.support.v7.widget.AppCompatTextView {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        int cornor = Math.min(w,h) / 2;
+        ((GradientDrawable) getBackground()).setCornerRadius(cornor);
+        LogUtil.d("onSizeChanged width:"+w + " height:" + h);
     }
 
     private @ColorInt int getRandomColor(){

@@ -70,7 +70,7 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        LogUtil.i(TAG,null,"title:%s,url:%s",mTitle,mUrl);
+        LogUtil.d(TAG,null,"title:%s,url:%s",mTitle,mUrl);
         agentWeb = AgentWeb.with(this)
                 .setAgentWebParent(layout_progress, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
                 .useDefaultIndicator(-1, 3)
@@ -134,5 +134,10 @@ public class WebActivity extends BaseActivity {
     protected void onDestroy() {
         agentWeb.getWebLifeCycle().onDestroy();
         super.onDestroy();
+    }
+
+    @Override
+    protected boolean showToolbar() {
+        return true;
     }
 }

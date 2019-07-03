@@ -80,8 +80,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 如果在布局中没有 include_toolbar 请override并返回false
+     * 如果需要Toolbar 请在布局中 include_toolbar   并override 然后返回true
      * @return
      */
-    protected boolean showToolbar(){return true;}
+    protected boolean showToolbar(){return false;}
 }

@@ -36,8 +36,4 @@ public class WelcomeActivity extends BaseActivity {
                 });
     }
 
-    @Override
-    protected boolean showToolbar() {
-        return false;
-    }
 }

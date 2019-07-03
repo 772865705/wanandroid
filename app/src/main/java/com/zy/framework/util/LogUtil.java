@@ -172,6 +172,10 @@ public class LogUtil {
         if (level < sInternalLevel)
             return 0;
 
+        if (!TAG_DEFAULT.equals(tag)){
+            tag = TAG_DEFAULT + "-" +tag;
+        }
+
         if (tr == null) {
             switch (level) {
                 case V:

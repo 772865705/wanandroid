@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import com.zy.framework.base.BaseMvpActivity;
 import com.zy.framework.util.IntentUtils;
@@ -80,5 +81,11 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         fragments[0] = new HomeFragment();
         fragments[0] = new HomeFragment();
         fragments[0] = new HomeFragment();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
     }
 }

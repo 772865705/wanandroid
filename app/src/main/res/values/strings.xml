@@ -8,4 +8,7 @@
     <string name="navigate">导航</string>
     <string name="project">项目</string>
     <string name="me">我的</string>
+    <string name="search">搜索</string>
+    <string name="login">登录</string>
+    <string name="setting">设置</string>
 </resources>

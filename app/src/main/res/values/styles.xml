@@ -6,6 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- 更换右侧actionbar图标-->
+        <item name="android:actionOverflowButtonStyle">@style/OverflowStyle</item>
+    </style>
+
+    <style name="OverflowStyle">
+        <item name="android:src">@mipmap/icon_menu_collapse</item>
     </style>
 
 </resources>

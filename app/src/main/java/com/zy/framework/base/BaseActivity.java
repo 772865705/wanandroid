@@ -25,7 +25,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         beforeSetContentView();
         setContentView(getContentView());
         mUnbinder = ButterKnife.bind(this);
-        initToolBar();
+        if (showToolbar()){
+            initToolBar();
+        }
         initStatusBar();
         initView();
         initData();
@@ -34,7 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void initToolBar() {
         toolbar = findViewById(R.id.tool_common);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);//取toolbar的数据 生成新的ActionBar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setTitle("");
@@ -72,4 +74,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void beforeSetContentView() {
     }
+
+    protected boolean showToolbar(){return true;}
 }

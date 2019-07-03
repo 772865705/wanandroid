@@ -114,10 +114,6 @@ public class WebActivity extends BaseActivity {
     }
 
 
-    public void toBack(View view) {
-        finish();
-    }
-
     @Override
     protected void onPause() {
         agentWeb.getWebLifeCycle().onPause();

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 
+import com.zy.framework.net.NetManager;
 import com.zy.framework.util.LogUtil;
 
 import me.jessyan.autosize.AutoSizeConfig;
@@ -30,7 +31,11 @@ public class MyApplication extends Application {
 
         initAutosize();
         initlog();
+        initNet();
+    }
 
+    private void initNet() {
+        NetManager.getInstance().init(this);
     }
 
     private void initlog() {

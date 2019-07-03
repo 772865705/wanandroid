@@ -32,8 +32,6 @@ public class TagView extends android.support.v7.widget.AppCompatTextView {
     }
 
     private void init() {
-//        ViewUtils.setBgDrawable(this,R.drawable.shape_bg_cornor);
-//        setBackgroundResource(R.drawable.shape_bg_cornor);
         setTextColor(Color.WHITE);
         GradientDrawable background = (GradientDrawable) ViewUtils.getDrawable(getContext(),R.drawable.shape_bg_cornor);
         background.setColor(ViewUtils.randomColor());

@@ -6,9 +6,9 @@
     android:orientation="vertical"
     tools:context=".ui.fragment.KnowledgeFragment">
 
-    <com.zy.zywanandroid.view.TagView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="konoledge" />
+    <com.yyydjk.library.BannerLayout
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"/>
 
 </LinearLayout>

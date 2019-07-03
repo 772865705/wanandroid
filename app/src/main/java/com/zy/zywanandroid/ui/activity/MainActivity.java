@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
+import android.view.MenuItem;
 
 import com.zy.framework.base.BaseMvpActivity;
 import com.zy.framework.util.IntentUtils;
@@ -76,7 +78,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     protected void initData() {
-        WebActivity.start(this,"baidu","https://www.baidu.com");
         fragments[0] = new HomeFragment();
         fragments[0] = new HomeFragment();
         fragments[0] = new HomeFragment();
@@ -87,6 +88,20 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_setting:
+                break;
+            case R.id.action_search:
+                break;
+            case R.id.action_login:
+                WebActivity.start(this,"百度","https://www.baidu.com");
+                break;
+        }
         return true;
     }
 

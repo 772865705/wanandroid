@@ -11,6 +11,8 @@ import com.sdsmdg.tastytoast.TastyToast;
 import com.yyydjk.library.BannerLayout;
 import com.zy.framework.base.BaseFragment;
 import com.zy.framework.img.ImageUtil;
+import com.zy.framework.net.BeanChecker;
+import com.zy.framework.net.NetExceptionCatcher;
 import com.zy.framework.net.NetManager;
 import com.zy.framework.util.ToastUtil;
 import com.zy.zywanandroid.R;
@@ -54,7 +56,7 @@ public class HomeFragment extends BaseFragment {
     protected void initData() {
         addDispose(NetManager.getInstance().getService().getBanner()
                 .subscribeOn(Schedulers.io())
-                .map(bean -> bean.getData())
+                .map(new BeanChecker<>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(beans -> {
 
@@ -73,8 +75,6 @@ public class HomeFragment extends BaseFragment {
                             WebActivity.start(getActivity(),beans.get(position).getTitle(),beans.get(position).getUrl());
                         }
                     });
-                },err ->{
-
-                }));
+                },new NetExceptionCatcher<>()));
     }
 }

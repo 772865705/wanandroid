@@ -76,6 +76,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     protected void initData() {
+        WebActivity.start(this,"baidu","https://www.baidu.com");
         fragments[0] = new HomeFragment();
         fragments[0] = new HomeFragment();
         fragments[0] = new HomeFragment();

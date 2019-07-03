@@ -5,12 +5,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Window;
 
 import com.zy.framework.util.StatusBarUtil;
 import com.zy.zywanandroid.R;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -26,7 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getContentView());
         mUnbinder = ButterKnife.bind(this);
         if (showToolbar()){
-            initToolBar();
+            setActionBar();
         }
         initStatusBar();
         initView();
@@ -34,8 +32,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    private void initToolBar() {
+    private void setActionBar() {
         toolbar = findViewById(R.id.tool_common);
+        initToolbar(toolbar);
         setSupportActionBar(toolbar);//取toolbar的数据 生成新的ActionBar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -44,7 +43,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    protected void initStatusBar() {
+    protected void initToolbar(Toolbar toolbar){
+        toolbar.findViewById(R.id.img_toolbar_left).setOnClickListener(v -> finish());
+
+    };
+
+    private void initStatusBar() {
 
         //这里注意下 因为在评论区发现有网友调用setRootViewFitsSystemWindows 里面 winContent.getChildCount()=0 导致代码无法继续
         //是因为你需要在setContentView之后才可以调用 setRootViewFitsSystemWindows
@@ -75,5 +79,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void beforeSetContentView() {
     }
 
+    /**
+     * 如果在布局中没有 include_toolbar 请override并返回false
+     * @return
+     */
     protected boolean showToolbar(){return true;}
 }

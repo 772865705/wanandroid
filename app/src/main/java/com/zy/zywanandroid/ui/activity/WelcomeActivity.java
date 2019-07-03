@@ -35,4 +35,9 @@ public class WelcomeActivity extends BaseActivity {
                     finish();
                 });
     }
+
+    @Override
+    protected boolean showToolbar() {
+        return false;
+    }
 }

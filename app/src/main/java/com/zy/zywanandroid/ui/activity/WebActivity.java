@@ -7,9 +7,11 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import com.just.agentweb.AgentWeb;
 import com.just.agentweb.DefaultWebClient;
 import com.zy.framework.base.BaseActivity;
+import com.zy.framework.util.DisplayUtils;
 import com.zy.framework.util.LogUtil;
 import com.zy.zywanandroid.R;
 
@@ -60,7 +63,11 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void initToolbar(Toolbar toolbar) {
         super.initToolbar(toolbar);
-        ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(mTitle);
+        TextView tv_title = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        tv_title.setText(mTitle);
+//        tv_title.setTextSize(DisplayUtils.dip2px(this,6));
+        tv_title.setSelected(true);
+
     }
 
     @Override
@@ -82,7 +89,20 @@ public class WebActivity extends BaseActivity {
                 .ready()
                 .go(mUrl);
 
-        agentWeb.getWebCreator().getWebView().setWebViewClient(new WebViewClient(){
+        WebView webView = agentWeb.getWebCreator().getWebView();
+        WebSettings settings = webView.getSettings();
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
+
+        webView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                if (TextUtils.isEmpty(mTitle)){
+                    ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(webView.getTitle());
+                }
+            }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -103,6 +123,7 @@ public class WebActivity extends BaseActivity {
 //                return super.shouldOverrideUrlLoading(view, url);
             }
         });
+
     }
 
     @Override

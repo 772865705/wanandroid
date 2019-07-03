@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.sdsmdg.tastytoast.TastyToast;
 import com.yyydjk.library.BannerLayout;
 import com.zy.framework.base.BaseFragment;
 import com.zy.framework.img.ImageUtil;
 import com.zy.framework.net.NetManager;
+import com.zy.framework.util.ToastUtil;
 import com.zy.zywanandroid.R;
 import com.zy.zywanandroid.bean.BannerBean;
 import com.zy.zywanandroid.ui.activity.WebActivity;
@@ -50,13 +52,14 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        NetManager.getInstance().getService().getBanner()
+        addDispose(NetManager.getInstance().getService().getBanner()
                 .subscribeOn(Schedulers.io())
+                .map(bean -> bean.getData())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(bean -> {
+                .subscribe(beans -> {
 
-                    ArrayList<String> urls = new ArrayList<>(bean.getData().size());
-                    for (BannerBean datum : bean.getData()) {
+                    ArrayList<String> urls = new ArrayList<>(beans.size());
+                    for (BannerBean datum : beans) {
                         urls.add(datum.getImagePath());
                     }
                     //网络地址
@@ -67,9 +70,11 @@ public class HomeFragment extends BaseFragment {
                         @Override
                         public void onItemClick(int position) {
 //                            Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
-                            WebActivity.start(getActivity(),"",bean.getData().get(position).getUrl());
+                            WebActivity.start(getActivity(),beans.get(position).getTitle(),beans.get(position).getUrl());
                         }
                     });
-                },err ->{});
+                },err ->{
+
+                }));
     }
 }

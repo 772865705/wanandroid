@@ -33,3 +33,8 @@
  # Ignore annotation used for build tooling.
  -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 
+# Favor
+-dontwarn com.cocosw.favor.** { *; }
+-keep class com.cocosw.favor.** { *; }
+
+#-keep class me.linkaipeng.autosp.** { *; }

@@ -11,7 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.zy.framework.base.BaseMvpActivity;
+import com.zy.framework.sp.SharePreferenceHelper;
 import com.zy.framework.util.IntentUtils;
+import com.zy.framework.util.LogUtil;
 import com.zy.zywanandroid.R;
 import com.zy.zywanandroid.ui.contract.MainContract;
 import com.zy.zywanandroid.ui.fragment.HomeFragment;
@@ -78,6 +80,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     protected void initData() {
+        String name = SharePreferenceHelper.get().getDefault().name();
+        LogUtil.i(name);
+        SharePreferenceHelper.get().getDefault().setName("zhaoyueset");
         fragments[0] = new HomeFragment();
         fragments[0] = new HomeFragment();
         fragments[0] = new HomeFragment();

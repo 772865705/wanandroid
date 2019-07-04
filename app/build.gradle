@@ -53,4 +53,8 @@ dependencies {
     })
 
     implementation 'com.github.dongjunkun:BannerLayout:1.0.6'
+
+    implementation 'com.cocosw:favor:0.2.0@aar'
+    implementation 'me.linkaipeng:autoSPAnnotation:1.0.0'
+    annotationProcessor 'me.linkaipeng:autoSPCompiler:1.0.0'
 }

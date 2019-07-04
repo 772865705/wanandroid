@@ -11,4 +11,5 @@
     <string name="search">搜索</string>
     <string name="login">登录</string>
     <string name="setting">设置</string>
+    <string name="search_hint">客官想找找什么呢</string>
 </resources>

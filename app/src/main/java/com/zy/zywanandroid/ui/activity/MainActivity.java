@@ -80,14 +80,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     protected void initData() {
-        String name = SharePreferenceHelper.get().getDefault().name();
-        LogUtil.i(name);
-        SharePreferenceHelper.get().getDefault().setName("zhaoyueset");
-        fragments[0] = new HomeFragment();
-        fragments[0] = new HomeFragment();
-        fragments[0] = new HomeFragment();
-        fragments[0] = new HomeFragment();
-        fragments[0] = new HomeFragment();
+
     }
 
     @Override
@@ -102,6 +95,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             case R.id.action_setting:
                 break;
             case R.id.action_search:
+                SearchActivity.start(this);
                 break;
             case R.id.action_login:
                 WebActivity.start(this,"百度","https://www.baidu.com");

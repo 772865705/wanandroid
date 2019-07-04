@@ -2,6 +2,7 @@ package com.zy.zywanandroid.net;
 
 import com.zy.framework.base.BaseBean;
 import com.zy.zywanandroid.bean.BannerBean;
+import com.zy.zywanandroid.bean.HotWordBean;
 
 import java.util.ArrayList;
 
@@ -15,5 +16,10 @@ public interface NetApiService {
 
     @GET("banner/json")
     Observable<BaseBean<ArrayList<BannerBean>>> getBanner();
+
+    @GET("hotkey/json")
+    Observable<BaseBean<ArrayList<HotWordBean>>> getHotWord();
+
+
 
 }

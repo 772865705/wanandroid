@@ -15,6 +15,7 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter=setPresenter();
         if (mPresenter!=null) {
             mPresenter.onCreate(savedInstanceState);
         }

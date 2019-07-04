@@ -44,7 +44,7 @@ public class TagView extends android.support.v7.widget.AppCompatTextView {
         super.onSizeChanged(w, h, oldw, oldh);
         int cornor = Math.min(w,h) / 2;
         ((GradientDrawable) getBackground()).setCornerRadius(cornor);
-        LogUtil.d("onSizeChanged width:"+w + " height:" + h);
+        LogUtil.d("onSizeChanged width:"+ w + " height:" + h);
     }
 
     private @ColorInt int getRandomColor(){

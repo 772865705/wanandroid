@@ -40,6 +40,7 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.5'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     api 'com.squareup.okhttp3:okhttp:3.11.0'
     api 'com.jakewharton:butterknife:8.8.1'
     //butter knife

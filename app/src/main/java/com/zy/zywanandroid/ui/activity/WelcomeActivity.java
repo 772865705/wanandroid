@@ -1,9 +1,12 @@
 package com.zy.zywanandroid.ui.activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.zy.framework.base.BaseActivity;
 import com.zy.framework.util.LogUtil;
+import com.zy.framework.util.ToastUtil;
 import com.zy.zywanandroid.R;
 
 import java.util.concurrent.TimeUnit;
@@ -26,6 +29,19 @@ public class WelcomeActivity extends BaseActivity {
     @SuppressLint("CheckResult")
     @Override
     protected void initData() {
+
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                .subscribe(granted -> {
+                    if(!granted){
+                        ToastUtil.showToast("没有文件权限");
+                    }
+                    jump2Main();
+                });
+    }
+
+    private void jump2Main() {
         Observable.just(0)
                 .delay(2, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())

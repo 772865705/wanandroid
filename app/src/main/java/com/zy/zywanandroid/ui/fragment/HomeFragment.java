@@ -58,28 +58,25 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> implements Home
 
     @Override
     protected void initData() {
-        addDispose(NetManager.getInstance().getService().getBanner()
-                .subscribeOn(Schedulers.io())
-                .map(new BeanChecker<>())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(beans -> {
+    }
 
-                    ArrayList<String> urls = new ArrayList<>(beans.size());
-                    for (BannerBean datum : beans) {
-                        urls.add(datum.getImagePath());
-                    }
-                    //网络地址
-                    banner.setViewUrls(urls);
+    @Override
+    public void onBannerBeans(ArrayList<BannerBean> beans) {
+        ArrayList<String> urls = new ArrayList<>(beans.size());
+        for (BannerBean datum : beans) {
+            urls.add(datum.getImagePath());
+        }
+        //网络地址
+        banner.setViewUrls(urls);
 
-                    //添加点击监听
-                    banner.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
-                        @Override
-                        public void onItemClick(int position) {
+        //添加点击监听
+        banner.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
 //                            Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
-                            WebActivity.start(getActivity(),beans.get(position).getTitle(),beans.get(position).getUrl());
-                        }
-                    });
-                },new NetExceptionCatcher<>()));
+                WebActivity.start(getActivity(),beans.get(position).getTitle(),beans.get(position).getUrl());
+            }
+        });
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.zy.zywanandroid.app.MyApplication;
 
 public class SharePreferenceHelper {
 
-    SPDefault spDefault;
+    volatile SPDefault spDefault;
     public SPDefault getDefault(){
         if (spDefault == null){
             spDefault = new FavorAdapter.Builder(MyApplication.getApp()).build().create(SPDefault.class);

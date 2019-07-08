@@ -47,6 +47,11 @@ public class TagView extends android.support.v7.widget.AppCompatTextView {
         LogUtil.d("onSizeChanged width:"+ w + " height:" + h);
     }
 
+    @Override
+    public void setBackgroundColor(int color){
+        ((GradientDrawable) getBackground()).setColor(color);
+    }
+
     private @ColorInt int getRandomColor(){
         return new Random().nextInt(0x1000000);
     }

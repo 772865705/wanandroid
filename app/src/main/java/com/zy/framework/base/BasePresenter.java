@@ -21,11 +21,11 @@ public class BasePresenter<V, M> implements IPresenter {
         this.mModel = model;
     }
 
-    public M getModel() {
+    protected M getModel() {
         return mModel;
     }
 
-    public V getView() {
+    protected V getView() {
         return mView;
     }
 
@@ -46,7 +46,7 @@ public class BasePresenter<V, M> implements IPresenter {
 
     @Override
     public void onDestroy() {
-
+        unDispose();
     }
 
     @Override
@@ -65,7 +65,7 @@ public class BasePresenter<V, M> implements IPresenter {
      *
      * @param disposable
      */
-    public void addDispose(Disposable disposable) {
+    protected void addDispose(Disposable disposable) {
         if (mCompositeDisposable == null) {
             mCompositeDisposable = new CompositeDisposable();
         }

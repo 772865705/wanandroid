@@ -2,14 +2,17 @@ package com.zy.zywanandroid.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.zy.framework.base.BaseMvpActivity;
 import com.zy.zywanandroid.R;
+import com.zy.zywanandroid.db.bean.RecentlySearchBean;
 import com.zy.zywanandroid.ui.contract.SearchContract;
 import com.zy.zywanandroid.ui.model.SearchModel;
 import com.zy.zywanandroid.ui.presenter.SearchPresenter;
@@ -90,10 +93,27 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> implements 
     }
 
     @Override
+    public void showHistory(List<RecentlySearchBean> list) {
+        wrapHistory.removeAllViews();
+        for (RecentlySearchBean record : list) {
+            TagView tagView = new TagView(this);
+            tagView.setText(record.searchTxt);
+            tagView.setBackgroundColor(Color.GRAY);
+            wrapHistory.addView(tagView);
+            tagView.setOnClickListener( v -> {
+                toolbarTitle.setText(record.searchTxt);
+            });
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
-
+                String txt = toolbarTitle.getText().toString();
+                if (!TextUtils.isEmpty(txt)){
+                    getPresenter().addSearchRecord(txt);
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);

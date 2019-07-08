@@ -33,4 +33,9 @@ public class SearchModel implements SearchContract.Model {
     public void addRecord(String text) {
         AppDatabase.getInstance().getSearchDao().insert(new RecentlySearchBean(text));
     }
+
+    @Override
+    public void deleteRecord() {
+        AppDatabase.getInstance().getSearchDao().deleteAll();
+    }
 }

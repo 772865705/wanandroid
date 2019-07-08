@@ -66,4 +66,8 @@ public class SearchPresenter extends BasePresenter<SearchContract.View, SearchCo
         }
         //TODO 跳转搜索结果页面
     }
+
+    public void onDelete(){
+        getModel().deleteRecord();
+    }
 }

@@ -31,4 +31,7 @@ public interface SearchDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(RecentlySearchBean ... bean);
 
+    @Query("DELETE FROM search")
+    void deleteAll();
+
 }

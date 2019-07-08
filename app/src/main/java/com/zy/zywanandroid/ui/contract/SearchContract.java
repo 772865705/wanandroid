@@ -20,6 +20,7 @@ public interface SearchContract {
         Observable<BaseBean<ArrayList<HotWordBean>>> getHotWord();
         Flowable<List<RecentlySearchBean>> getRecord();
         void addRecord(String text);
+        void deleteRecord();
     }
 
     interface View {

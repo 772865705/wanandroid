@@ -13,13 +13,19 @@
         android:id="@+id/wrap_hot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-         />
+        android:layout_margin="5dp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/color_bg_divider" />
+
+    <TextView
+        android:id="@+id/tv_delete_search_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin = "8dp"
+        android:text="删除历史记录" />
 
     <com.zy.zywanandroid.view.AutoWrapLayout
         android:id="@+id/wrap_history"

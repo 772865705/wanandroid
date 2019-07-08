@@ -3,11 +3,12 @@ package com.zy.zywanandroid.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.zy.framework.base.BaseMvpActivity;
 import com.zy.zywanandroid.R;
@@ -21,6 +22,8 @@ import com.zy.zywanandroid.view.TagView;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SearchActivity extends BaseMvpActivity<SearchPresenter> implements SearchContract.View {
 
@@ -30,6 +33,8 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> implements 
     AutoWrapLayout wrapHot;
     @BindView(R.id.wrap_history)
     AutoWrapLayout wrapHistory;
+    @BindView(R.id.tv_delete_search_history)
+    TextView tvDeleteSearchHistory;
 
     public static void start(Context context) {
         context.startActivity(new Intent(context, SearchActivity.class));
@@ -112,5 +117,10 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> implements 
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.tv_delete_search_history)
+    public void onViewClicked() {
+        getPresenter().onDelete();
     }
 }

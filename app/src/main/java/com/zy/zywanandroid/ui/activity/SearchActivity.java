@@ -3,7 +3,6 @@ package com.zy.zywanandroid.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -22,7 +21,6 @@ import com.zy.zywanandroid.view.TagView;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class SearchActivity extends BaseMvpActivity<SearchPresenter> implements SearchContract.View {
 
@@ -85,7 +83,7 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> implements 
             TagView tagView = new TagView(this);
             tagView.setText(hot);
             wrapHot.addView(tagView);
-            tagView.setOnClickListener( v -> {
+            tagView.setOnClickListener(v -> {
                 toolbarTitle.setText(hot);
             });
         }
@@ -100,7 +98,7 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> implements 
             tagView.setText(record.searchTxt);
             tagView.setBackgroundColor(Color.GRAY);
             wrapHistory.addView(tagView);
-            tagView.setOnClickListener( v -> {
+            tagView.setOnClickListener(v -> {
                 toolbarTitle.setText(record.searchTxt);
             });
         }
@@ -110,10 +108,7 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> implements 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
-                String txt = toolbarTitle.getText().toString();
-                if (!TextUtils.isEmpty(txt)){
-                    getPresenter().addSearchRecord(txt);
-                }
+                getPresenter().onSearch(toolbarTitle.getText().toString());
                 return true;
         }
         return super.onOptionsItemSelected(item);

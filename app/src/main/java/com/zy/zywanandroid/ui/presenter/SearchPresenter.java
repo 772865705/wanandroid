@@ -1,6 +1,7 @@
 package com.zy.zywanandroid.ui.presenter;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.yyydjk.library.BannerLayout;
 import com.zy.framework.base.BasePresenter;
@@ -59,7 +60,10 @@ public class SearchPresenter extends BasePresenter<SearchContract.View, SearchCo
         );
     }
 
-    public void addSearchRecord(String text){
-        getModel().addRecord(text);
+    public void onSearch(String txt){
+        if (!TextUtils.isEmpty(txt)){
+            getModel().addRecord(txt);
+        }
+        //TODO 跳转搜索结果页面
     }
 }

@@ -1,23 +1,29 @@
 package com.zy.framework.base;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
-public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity {
+/**
+ * Date: 2019/7/8 0008
+ * Author: Zhaoyue
+ */
+public abstract class BaseMvpFragment<T extends IPresenter> extends BaseFragment {
 
     private T mPresenter;
 
+    @Nullable
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
         mPresenter=setPresenter();
         if (mPresenter!=null) {
             mPresenter.onCreate(savedInstanceState);
         }
+        return view;
     }
 
     public T  getPresenter() {
@@ -26,16 +32,8 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
 
     public abstract T setPresenter();
 
-    protected abstract void initView();
-
-    protected void initData(){};
-
-    protected void beforeSetContentView() {
-        super.beforeSetContentView();
-    }
-
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         if (mPresenter!=null) {
             mPresenter.onStart();
@@ -44,7 +42,7 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
 
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         if (mPresenter!=null) {
             mPresenter.onResume();
@@ -52,7 +50,7 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         if (mPresenter!=null) {
             mPresenter.onPause();
@@ -60,7 +58,7 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         if (mPresenter!=null) {
             mPresenter.onStop();
@@ -68,8 +66,8 @@ public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         if (mPresenter!=null) {
             mPresenter.onDestroy();
         }

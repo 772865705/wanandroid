@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.sdsmdg.tastytoast.TastyToast;
 import com.yyydjk.library.BannerLayout;
 import com.zy.framework.base.BaseFragment;
+import com.zy.framework.base.BaseMvpFragment;
 import com.zy.framework.img.ImageUtil;
 import com.zy.framework.net.BeanChecker;
 import com.zy.framework.net.NetExceptionCatcher;
@@ -18,6 +19,9 @@ import com.zy.framework.util.ToastUtil;
 import com.zy.zywanandroid.R;
 import com.zy.zywanandroid.bean.BannerBean;
 import com.zy.zywanandroid.ui.activity.WebActivity;
+import com.zy.zywanandroid.ui.contract.HomeContract;
+import com.zy.zywanandroid.ui.model.HomeModel;
+import com.zy.zywanandroid.ui.presenter.HomePresenter;
 
 import java.util.ArrayList;
 
@@ -31,7 +35,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by ZhaoYue on 2019/6/26.
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseMvpFragment<HomePresenter> implements HomeContract.View {
 
     @BindView(R.id.banner)
     BannerLayout banner;
@@ -76,5 +80,10 @@ public class HomeFragment extends BaseFragment {
                         }
                     });
                 },new NetExceptionCatcher<>()));
+    }
+
+    @Override
+    public HomePresenter setPresenter() {
+        return new HomePresenter(this,new HomeModel());
     }
 }

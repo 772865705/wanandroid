@@ -9,7 +9,4 @@ public interface HomeContract {
 
     interface View {
     }
-
-    interface Presenter {
-    }
 }

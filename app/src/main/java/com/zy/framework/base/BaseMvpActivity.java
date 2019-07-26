@@ -9,6 +9,7 @@ import butterknife.Unbinder;
 
 public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity {
 
+    private Object test;//测试git
     private T mPresenter;
 
     @Override

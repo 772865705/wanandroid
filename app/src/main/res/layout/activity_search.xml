@@ -21,11 +21,12 @@
         android:background="@color/color_bg_divider" />
 
     <TextView
+        android:gravity="right"
         android:id="@+id/tv_delete_search_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin = "8dp"
-        android:text="删除历史记录" />
+        android:text="@string/delete_history" />
 
     <com.zy.zywanandroid.view.AutoWrapLayout
         android:id="@+id/wrap_history"

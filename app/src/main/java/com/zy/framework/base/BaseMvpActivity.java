@@ -9,6 +9,7 @@ import butterknife.Unbinder;
 
 public abstract class BaseMvpActivity<T extends IPresenter> extends BaseActivity {
 
+    public Object text;
     private Unbinder mUnbinder;
     private T mPresenter;
 

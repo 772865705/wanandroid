@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -64,7 +65,7 @@ public class WebActivity extends BaseActivity {
     protected void initToolbar(Toolbar toolbar) {
         super.initToolbar(toolbar);
         TextView tv_title = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        tv_title.setText(mTitle);
+        tv_title.setText(Html.fromHtml(mTitle));
 //        tv_title.setTextSize(DisplayUtils.dip2px(this,6));
         tv_title.setSelected(true);
 

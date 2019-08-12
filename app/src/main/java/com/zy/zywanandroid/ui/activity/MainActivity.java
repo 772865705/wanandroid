@@ -6,14 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.zy.framework.base.BaseMvpActivity;
-import com.zy.framework.sp.SharePreferenceHelper;
 import com.zy.framework.util.IntentUtils;
-import com.zy.framework.util.LogUtil;
 import com.zy.zywanandroid.R;
 import com.zy.zywanandroid.ui.contract.MainContract;
 import com.zy.zywanandroid.ui.fragment.HomeFragment;
@@ -24,7 +21,7 @@ import com.zy.zywanandroid.ui.presenter.MainPresenter;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.IView {
+public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.View {
 
 
     @BindView(R.id.tool_common)

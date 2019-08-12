@@ -72,6 +72,13 @@ public class BasePresenter<V, M> implements IPresenter {
         mCompositeDisposable.add(disposable);//将所有 Disposable 放入集中处理
     }
 
+    protected void addDispose(Disposable... disposables){
+        for (Disposable d :
+                disposables) {
+            addDispose(d);
+        }
+    }
+
     /**
      * 停止集合中正在执行的 RxJava 任务
      */

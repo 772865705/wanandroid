@@ -12,6 +12,7 @@ import com.zy.zywanandroid.bean.BannerBean;
 import com.zy.zywanandroid.bean.HotWordBean;
 import com.zy.zywanandroid.db.bean.RecentlySearchBean;
 import com.zy.zywanandroid.ui.activity.SearchActivity;
+import com.zy.zywanandroid.ui.activity.SearchResultActivity;
 import com.zy.zywanandroid.ui.activity.WebActivity;
 import com.zy.zywanandroid.ui.contract.SearchContract;
 import com.zy.zywanandroid.ui.model.SearchModel;
@@ -29,9 +30,6 @@ import io.reactivex.schedulers.Schedulers;
  * Author: Zhaoyue
  */
 public class SearchPresenter extends BasePresenter<SearchContract.View, SearchContract.Model> {
-    public SearchPresenter(SearchContract.View view) {
-        super(view);
-    }
 
     public SearchPresenter(SearchContract.View view, SearchContract.Model model) {
         super(view, model);
@@ -63,8 +61,9 @@ public class SearchPresenter extends BasePresenter<SearchContract.View, SearchCo
     public void onSearch(String txt){
         if (!TextUtils.isEmpty(txt)){
             getModel().addRecord(txt);
+            SearchResultActivity.start(((SearchActivity) getView()),txt);
         }
-        //TODO 跳转搜索结果页面
+
     }
 
     public void onDelete(){

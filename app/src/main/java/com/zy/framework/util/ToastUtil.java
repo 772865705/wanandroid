@@ -15,4 +15,8 @@ public class ToastUtil {
         Toast.makeText(MyApplication.getApp(), resid, Toast.LENGTH_SHORT).show();
     }
 
+    public static void showError(String err){
+        TastyToast.makeText(MyApplication.getApp(),err,TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+    }
+
 }

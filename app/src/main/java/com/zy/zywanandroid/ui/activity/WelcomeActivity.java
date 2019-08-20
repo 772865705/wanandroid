@@ -2,6 +2,7 @@ package com.zy.zywanandroid.ui.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.support.design.widget.Snackbar;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.zy.framework.base.BaseActivity;
@@ -52,4 +53,12 @@ public class WelcomeActivity extends BaseActivity {
                 });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Snackbar.make(findViewById(R.id.img_welcome), "试试看", Snackbar.LENGTH_SHORT)
+        .setAction("Action", v->{LogUtil.i("log");})
+        .show();
+        Snackbar.make(findViewById(R.id.img_welcome),"试试看",Snackbar.LENGTH_SHORT);
+    }
 }
